@@ -16,12 +16,14 @@ class Life {
         Life();
     private:
         int grid[ROWS * COLS];
-        std::vector<std::pair<int,int> >* birthRefs, deathRefs;
+        std::vector<int> *birthRefs, *deathRefs;
 
         void makeGrid();
         void death();
         void birth();
-        int checkAdj();
+        void tick();
+        void checkGrid();
+        int checkAdj(int index);
 
    
 

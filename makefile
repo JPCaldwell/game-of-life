@@ -10,4 +10,4 @@ driver.o: driver.cpp
 	g++ -c driver.cpp
 
 clean:
-	rm life.o driver.o life
+	rm life.o driver.o life life.h.gch
