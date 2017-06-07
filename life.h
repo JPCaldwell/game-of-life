@@ -16,7 +16,7 @@ class Life {
         Life();
     private:
         int grid[ROWS * COLS];
-        std::vector<int> *birthRefs, *deathRefs;
+        std::vector<int> birthRefs, deathRefs;
 
         void makeGrid();
         void death();

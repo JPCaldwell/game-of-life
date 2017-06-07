@@ -17,19 +17,28 @@ void Life::makeGrid() {
 
 //removes cells that die on this tick
 void Life::death() {
+    for(vector<int>::iterator it = deathRefs.begin(); it != deathRefs.end(); it++) {
+        grid[*it] = 0;
+    }
+    deathRefs.clear();
 }
 
-//removes cells that are born on this tick
+//adds cells that are born on this tick
 void Life::birth() {
-
+    for(vector<int>::iterator it = birthRefs.begin(); it != birthRefs.end(); it++) {
+        grid[*it] = 1;
+    }
+    birthRefs.clear();
 }
 
 //perform one tick of the game, i.e. remove cells that die and add cells that are born
 void Life::tick() {
     checkGrid();
+    death();
+    birth();
 }
 
-//checks the adjacencies for the 
+//checks the adjacencies for each cell and marks cells for death/birth 
 void Life::checkGrid() {
     for(int i = 0; i < COLS * ROWS -1; i++) {
         int adj = checkAdj(i);
@@ -38,11 +47,11 @@ void Life::checkGrid() {
             //current cell is alive
             if(adj < 2) {
                 //cell will die with <2 neighbor(s)
-                deathRefs->push_back(i);
+                deathRefs.push_back(i);
             }
             else if (adj > 3) {
                 //cell will die with >3 neigbors
-                deathRefs->push_back(i);
+                deathRefs.push_back(i);
             }
         }
 
@@ -50,7 +59,7 @@ void Life::checkGrid() {
             //current cell is dead
             if(adj == 3) {
                 //dead cell with exactly 3 neighbors will be born
-                birthRefs->push_back(i);
+                birthRefs.push_back(i);
             }
         }
     }
@@ -106,11 +115,16 @@ int Life::checkAdj(int index) {
 
 void Life::init() {
     makeGrid();
-    tick(); //TODO call tick user supplied number of times
-    for(int i = 1; i < COLS * ROWS; i++) {
-        cout << grid[i] << " ";
-        if (i % (COLS - 1) == 0 && i > 0)
-            cout << endl;
+    for(int i = 0; i < 10; i++) {
+        cout << "round " << i << "\n\n";
+        for(int i = 1; i < COLS * ROWS; i++) {
+            cout << grid[i] << " ";
+            if (i % (COLS - 1) == 0 && i > 0)
+                cout << endl;
+        }
+        tick();
+        cout << endl;
+        
     }
     cout << endl;
 }
