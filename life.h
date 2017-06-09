@@ -4,21 +4,22 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <fstream>
 
 #define ROWS 10
 #define COLS 10
 
 class Life {
-    public:
-       
+    public:   
 
-        void init();
+        void init(std::vector<int>* startLocs);
         Life();
     private:
         int grid[ROWS * COLS];
         std::vector<int> birthRefs, deathRefs;
+        std::ofstream log;
 
-        void makeGrid();
+        void makeGrid(std::vector<int>* startLocs);
         void death();
         void birth();
         void tick();
