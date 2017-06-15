@@ -18,6 +18,7 @@ class Life {
         int grid[ROWS * COLS];
         std::vector<int> birthRefs, deathRefs;
         std::ofstream log;
+        bool wasChange;
 
         void makeGrid(std::vector<int>* startLocs);
         void death();
