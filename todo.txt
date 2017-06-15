@@ -1,2 +1,1 @@
-Add option to get starting cells from file
 Add input checking for user-supplied starting cells
