@@ -1,1 +1,1 @@
-Add input checking for user-supplied starting cells
+Add command line option to include how many rounds to run (including a default if not specified)
