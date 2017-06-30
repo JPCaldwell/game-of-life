@@ -128,7 +128,7 @@ void Life::init(vector<int>* startLocs) {
     makeGrid(startLocs);
 
     int i = 0;
-    while(wasChange && i < 100) { //run until grid is stable (i.e. no changes were made last tick) or 100 ticks
+    while(wasChange && i < maxCycles) { //run until grid is stable (i.e. no changes were made last tick) or 100 ticks
         cout << "round " << i << "\n\n";
         log << "round " << i << "\n\n";
         for(int j = 0; j < COLS * ROWS; ++j) {
@@ -144,9 +144,16 @@ void Life::init(vector<int>* startLocs) {
     }
     log.close();
 }
-
+    //default constructor when user does not specify maxCycles
     Life::Life() : birthRefs() 
                    , deathRefs()
                    , log("log.txt", std::ios::out | std::ios::trunc)
-                   , wasChange(1) { }
+                   , wasChange(1)
+                   , maxCycles(100) { }
 
+    //constructor for when the user specifies maxCycles
+    Life::Life(int maxCycles) : birthRefs()
+                                , deathRefs()
+                                , log("log.txt", std::ios::out | std::ios::trunc)
+                                , wasChange(1)
+                                , maxCycles(maxCycles) { }

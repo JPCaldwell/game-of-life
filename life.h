@@ -14,8 +14,10 @@ class Life {
 
         void init(std::vector<int>* startLocs);
         Life();
+        Life(int maxCycles);
     private:
         int grid[ROWS * COLS];
+        int maxCycles;
         std::vector<int> birthRefs, deathRefs;
         std::ofstream log;
         bool wasChange;
