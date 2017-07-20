@@ -1,1 +1,1 @@
-mplementation of Conway's Game of Life in C++. Options to read input either through manual input via command line or a command line option to read from a specified file. Output is written to a results file and a log of actions taken is written to a log file.
+Implementation of Conway's Game of Life in C++. Options to read input either through manual input via command line or a command line option to read from a specified file. Output is written to a results file and a log of actions taken is written to a log file.
