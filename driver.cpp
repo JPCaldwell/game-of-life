@@ -6,8 +6,6 @@
 #include <fstream>
 #include <cstring>
 
-
-
 int main(int argc, char* argv[]) {
     Life* game;
     if(argc == 4) { //user supplied maximum cycles
@@ -17,12 +15,9 @@ int main(int argc, char* argv[]) {
         game = new Life(atoi(cycles)+1);
     }
     else {  //no user supplied maximum cycles 
-
-
-        std::cout << "default" << std::endl;
         game = new Life();
     }
-    
+
     std::vector<int>* startLocs = new std::vector<int>();
     int x, y;
     std::string inp, strDone;
@@ -105,10 +100,10 @@ int main(int argc, char* argv[]) {
                     std::cerr << x << ", " << y << " is an invalid index. Moving to next line..." << std::endl;
                 }
 
-            
-                            
+
+
             }
-            
+
         }
         else {
             std::cerr << "File could not be opened" << std::endl;
@@ -116,6 +111,8 @@ int main(int argc, char* argv[]) {
         }
     }
     game->init(startLocs);
+    delete game;
+    delete startLocs;
     return 0;
 }
 
